@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Especial</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffccd5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #333;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #f54291;
+      margin-bottom: 20px;
+    }
+
+    .mensaje {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .boton {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 8px;
+    }
+
+    .aceptar {
+      background-color: #42f553;
+      color: white;
+    }
+
+    .rechazar {
+      background-color: #f54242;
+      color: white;
+    }
+
+    .aceptar:hover, .rechazar:hover {
+      opacity: 0.8;
+    }
+
+    .rechazar-movible {
+      position: absolute;
+      transition: 0.3s;
+    }
+
+    
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1>Hola tonta</h1>
+    <p class="mensaje">Te invito a mi casa mañana. Aceptas?</p>
+
+    <div class="botones">
+      <button class="boton aceptar" onclick="aceptar()" style="padding-right: 20px;">Aceptar</button>
+      <button class="boton rechazar rechazar-movible" onclick="rechazar()" style="padding-left: 20px;">Rechazar</button>
+    </div>
+
+    <p id="respuesta"></p>
+  </div>
+
+  <script>
+    let posicionX = 0;
+    let posicionY = 0;
+
+    function rechazar() {
+      // Obtenemos el tamaño de la pantalla
+      const maxWidth = window.innerWidth - 100; // Restamos 100 para no salirse de la pantalla
+      const maxHeight = window.innerHeight - 100; // Restamos 100 para no salirse de la pantalla
+
+      // Generamos nuevas posiciones aleatorias para el botón de "Rechazar"
+      posicionX = Math.floor(Math.random() * maxWidth);
+      posicionY = Math.floor(Math.random() * maxHeight);
+
+      // Aplicamos las nuevas posiciones al botón
+      const botonRechazar = document.querySelector('.rechazar-movible');
+      botonRechazar.style.left = `${posicionX}px`;
+      botonRechazar.style.top = `${posicionY}px`;
+    }
+
+    function aceptar() {
+      document.getElementById('respuesta').textContent = "Muy bien, te espero para que no me dejes dormir :)";
+    }
+  </script>
+
+</body>
+</html>
